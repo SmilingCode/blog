@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Eric_J
- * Date: 25/8/18
- * Time: 4:36 PM
- */
 
 function get_db_config()
 {
@@ -14,17 +8,17 @@ function get_db_config()
         return $db_config = [
             'connection' => 'pgsql',
             'host' => $url["host"],
-            'database' => substr($url["path"], 1),
-            'username' => $url["user"],
-            'password' => $url["pass"]
+            'database'  => substr($url["path"], 1),
+            'username'  => $url["user"],
+            'password'  => $url["pass"],
         ];
     } else {
         return $db_config = [
             'connection' => env('DB_CONNECTION', 'mysql'),
             'host' => env('DB_HOST', 'localhost'),
-            'database' => env("DB_DATABASE", 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', '')
+            'database'  => env('DB_DATABASE', 'forge'),
+            'username'  => env('DB_USERNAME', 'forge'),
+            'password'  => env('DB_PASSWORD', ''),
         ];
     }
 }
