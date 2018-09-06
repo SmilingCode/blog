@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UsersController extends Controller
 {
     public function create()
     {
         return view('users.create');
+    }
+
+    public function show(User $user)
+    {
+        return view('users.show', compact('user'));
     }
 
     public function store(Request $request)
@@ -25,7 +31,10 @@ class UsersController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
+        session()->flash('success', 'welcome to our blog!');
         return redirect()->route('users.show', [$user]);
         // = return redirect()->route('users.show', [$user->id];
     }
+
+
 }
