@@ -31,6 +31,9 @@ class UsersController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
+        // auto login after register
+        Auth::login($user);
+
         session()->flash('success', 'welcome to our blog!');
         return redirect()->route('users.show', [$user]);
         // = return redirect()->route('users.show', [$user->id];
